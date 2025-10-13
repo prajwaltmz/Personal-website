@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prajwal Timsina - Civil Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            padding: 0 1rem;
+            max-height: 60px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        nav ul:hover {
+            max-height: 500px;
+        }
+
+        nav li {
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.4rem 0.7rem;
+            border-radius: 5px;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        nav a.active {
+            color: #dc2626;
+            background: rgba(220, 38, 38, 0.15);
+            font-weight: 600;
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: #dc2626;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #b8bfc9;
+            color: #333;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            color: #111827;
+            font-weight: 800;
+        }
+
+        .hero-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            animation: fadeInUp 1s ease 0.2s backwards;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content h2 .typed-text {
+            border-right: 3px solid #1e3a8a;
+            padding-right: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                border-color: #1e3a8a;
+            }
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #374151;
+            animation: fadeInUp 1s ease 0.4s backwards;
+            font-weight: 500;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #7a8fc4;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .about-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 5px solid white;
+        }
+
+        /* Achievements */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .achievement-card {
+            background: #e5e7eb;
+            color: #333;
+            padding: 2rem;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .achievement-card h3 {
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-card p {
+            color: #4b5563;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: #e5e7eb;
+            color: #333;
+            padding: 2rem;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: #2563eb;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #d1d5db;
+            color: #4b5563;
+        }
+
+        .skill-category li:last-child {
+            border-bottom: none;
+        }
+
+        /* Experience - Card Style */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .experience-card {
+            background: #e5e7eb;
+            padding: 2.5rem;
+            border-radius: 15px;
+            color: #333;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(37, 99, 235, 0.05);
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .experience-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .experience-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            color: #2563eb;
+        }
+
+        .experience-card .date {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            color: #6b7280;
+        }
+
+        .experience-card .company {
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+            color: #4b5563;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-item h3 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .contact-item a {
+            color: #2563eb;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.3rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 0.5rem 0;
+            }
+
+            nav ul {
+                gap: 0.3rem;
+                justify-content: flex-start;
+                max-height: 0;
+                opacity: 0;
+                padding: 0;
+                transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+            }
+
+            nav:hover ul,
+            nav ul:hover {
+                max-height: 500px;
+                opacity: 1;
+                padding: 0.5rem 1rem;
+            }
+
+            nav::before {
+                content: '☰ Menu';
+                display: block;
+                text-align: center;
+                color: #333;
+                font-weight: 600;
+                font-size: 1rem;
+                padding: 0.5rem;
+                cursor: pointer;
+            }
+
+            nav:hover::before {
+                color: #2563eb;
+            }
+
+            nav a {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.8rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .interest-card {
+            background: #e5e7eb;
+            color: #333;
+            padding: 2rem;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .interest-card h3 {
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+
+        .interest-card p {
+            color: #4b5563;
+        }
+
+        /* Education Cards */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .education-card {
+            background: #e5e7eb;
+            color: #333;
+            padding: 2.5rem;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .education-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .education-card h3 {
+            color: #2563eb;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .education-card .institution {
+            color: #4b5563;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .location {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        /* Training & Leadership */
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .training-card {
+            background: #e5e7eb;
+            color: #333;
+            padding: 2rem;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .training-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .training-card h4 {
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .training-card p {
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+
+        /* Gallery Section */
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .gallery-tab {
+            padding: 0.8rem 1.5rem;
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .gallery-tab:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        .gallery-tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .gallery-content {
+            display: none;
+        }
+
+        .gallery-content.active {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            transform: translateY(0);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 10001;
+        }
+
+        .lightbox-close:hover {
+            color: #667eea;
+        }
+
+        /* Recognition & Media Section */
+        .recognition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .recognition-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #2563eb;
+        }
+
+        .recognition-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .recognition-card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .recognition-card-header h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .recognition-card-header .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .recognition-card-body {
+            padding: 2rem;
+        }
+
+        .recognition-card-body p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .recognition-card-body .highlight {
+            background: #fef3c7;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-weight: 500;
+            color: #92400e;
+        }
+
+        .recognition-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .recognition-link:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .recognition-link::after {
+            content: '→';
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#interests">Research Interests</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#training">Training & Leadership</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#recognition">Recognition & Media</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Prajwal Timsina</h1>
+            <h2><span class="typed-text"></span></h2>
+            <p>Integrating field data with computational techniques to develop resilient infrastructure solutions</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                <a href="mailto:prajwal.timsina@durham.ac.uk?subject=Hello%20Prajwal&body=Hi%20Prajwal,%0D%0A%0D%0AI%20would%20like%20to%20connect%20with%20you." class="btn btn-secondary">Email Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I am a passionate Civil Engineer with hands-on experience in geotechnical analysis, numerical modeling, and site investigations. My work focuses on integrating field data with computational techniques to develop resilient infrastructure solutions.</p>
+                <p>My research bridges academic knowledge and practical engineering applications, with a particular emphasis on enhancing slope stability, roadside safety, and developing policy-oriented geotechnical solutions for Nepal and beyond.</p>
+                <p>Currently serving as a Research Assistant at Durham University's IHRR, I have conducted extensive field surveys and contributed to developing preliminary design frameworks for road cut slopes in Nepal under EPSRC-funded projects.</p>
+            </div>
+            <div class="about-image">
+                <img id="profile-pic" src="" alt="Prajwal Timsina">
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements">
+        <h2>Key Achievements</h2>
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <h3>🔬 Extensive Field Research</h3>
+                <p>Conducted field surveys across approximately 300 slope-hazard sites in Nepal for comprehensive geotechnical research.</p>
+            </div>
+            <div class="achievement-card">
+                <h3>📚 Published Researcher</h3>
+                <p>Research paper submitted to Transportation Geotechnics (Q1, IF 5.5) for peer review. Paper <span style="color: #22c55e; font-weight: 600;">accepted</span> in Innovative Infrastructure Solutions (Q2, IF 2.4).</p>
+            </div>
+            <div class="achievement-card">
+                <h3>🏗️ Design Framework Development</h3>
+                <p>Developed preliminary design frameworks and guidelines for road cut slopes in Nepal under EPSRC-funded projects.</p>
+            </div>
+            <div class="achievement-card">
+                <h3>🎓 International Recognition</h3>
+                <p>Awarded International Research Placement at Durham University, UK (2025).</p>
+            </div>
+            <div class="achievement-card">
+                <h3>👥 Event Coordination</h3>
+                <p>Coordinated national-level engineering competitions (AutoCAD/Bingo) with 1000 participants, securing sponsorships.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Interests -->
+    <section id="interests">
+        <h2>Research Interests</h2>
+        <div class="interests-grid">
+            <div class="interest-card">
+                <h3>Numerical Modeling</h3>
+                <p>Advanced numerical modeling and computational techniques in geotechnical engineering</p>
+            </div>
+            <div class="interest-card">
+                <h3>Site Investigation</h3>
+                <p>Geotechnical site investigations and laboratory soil testing</p>
+            </div>
+            <div class="interest-card">
+                <h3>Slope Stability</h3>
+                <p>Slope stability assessment and infrastructure resilience</p>
+            </div>
+            <div class="interest-card">
+                <h3>GIS & Programming</h3>
+                <p>GIS-based spatial analysis and Python programming for engineering applications</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="experience-grid">
+            <div class="experience-card">
+                <h3>Research Assistant</h3>
+                <div class="company">IHRR, Durham University</div>
+                <div class="date">May 2024 - Present</div>
+            </div>
+            <div class="experience-card">
+                <h3>Slope Analyst</h3>
+                <div class="company">National Defense University</div>
+                <div class="date">May 2024 - July 2024</div>
+            </div>
+            <div class="experience-card">
+                <h3>Final Year Project</h3>
+                <div class="company">Kathmandu Valley Support System Analysis</div>
+                <div class="date">March 2023 - March 2024</div>
+            </div>
+            <div class="experience-card">
+                <h3>Remote Sensing Analyst</h3>
+                <div class="company">Jaleshwor Municipality</div>
+                <div class="date">October 2023 - March 2024</div>
+            </div>
+            <div class="experience-card">
+                <h3>Coordinator & Sub-Coordinator</h3>
+                <div class="company">AutoCAD Competitions</div>
+                <div class="date">2023 - 2024</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Programming Skills</h3>
+                <ul>
+                    <li>Python (Pandas, Numpy, Matplotlib, Seaborn, Sympy)</li>
+                    <li>Machine Learning (Scikit-learn)</li>
+                    <li>C Programming</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Design & Modeling Software</h3>
+                <ul>
+                    <li>PLAXIS 2D & 3D</li>
+                    <li>GeoStudio (SEEP/W, Slope/W)</li>
+                    <li>ETABS, Civil 3D, AutoCAD</li>
+                    <li>QGIS, SNAP (remote sensing)</li>
+                    <li>LEAP software for energy modeling</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Language Skills</h3>
+                <ul>
+                    <li>English: IELTS Overall 6.5 (L 7.5, W 6.5, R 6.5, S 6.0)</li>
+                    <li>Nepali: Native</li>
+                    <li>Hindi: Fluent</li>
+                    <li>Japanese: Beginning</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Other Tools</h3>
+                <ul>
+                    <li>MS Office Suite</li>
+                    <li>MS Project</li>
+                    <li>Typing: 65 WPM</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <h2>Education</h2>
+        <div class="education-grid">
+            <div class="education-card">
+                <h3>Bachelor in Civil Engineering</h3>
+                <div class="institution">Tribhuvan University, IOE</div>
+                <div class="location">Pulchowk Campus, Nepal</div>
+            </div>
+            <div class="education-card">
+                <h3>High School</h3>
+                <div class="institution">Devi Secondary School</div>
+                <div class="location">Jhapa, Nepal</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training & Leadership -->
+    <section id="training">
+        <h2>Training & Leadership</h2>
+        <div class="training-grid">
+            <div class="training-card">
+                <h4>AutoCAD Training</h4>
+                <p>CESS-Nepal - Advanced AutoCAD techniques for civil engineering applications</p>
+            </div>
+            <div class="training-card">
+                <h4>ETABS Training</h4>
+                <p>CESS-Nepal - Structural analysis and design software training</p>
+            </div>
+            <div class="training-card">
+                <h4>Supervised Machine Learning</h4>
+                <p>Andrew NG, Coursera - Regression and Classification techniques</p>
+            </div>
+            <div class="training-card">
+                <h4>National Competition Coordinator</h4>
+                <p>Led AutoCAD & Bingo competitions with 1000 participants, securing sponsorships</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-tabs">
+            <div class="gallery-tab active" data-category="durham">Durham University (IHRR)</div>
+            <div class="gallery-tab" data-category="uk-cities">UK Cities & Coastal Visits</div>
+            <div class="gallery-tab" data-category="nepal-tours">Nepal Site Visits & Tours</div>
+            <div class="gallery-tab" data-category="college">College Last Day Memories</div>
+            <div class="gallery-tab" data-category="bingo">Bingo Competition</div>
+        </div>
+
+        <!-- Durham University Gallery -->
+        <div class="gallery-content active" data-category="durham">
+            <div class="gallery-item" data-img="durham-1.jpeg">
+                <img src="" alt="Durham University">
+                <div class="gallery-item-overlay">
+                    <p>Photo with Prof. David Toll</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="durham-2.jpeg">
+                <img src="" alt="Durham University">
+                <div class="gallery-item-overlay">
+                    <p>Selfie with Tunisha Gyawali, Prof. David Toll</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="durham-3.jpeg">
+                <img src="" alt="Durham University">
+                <div class="gallery-item-overlay">
+                    <p>Photo with Dr. Bhim Kumar Dahal, Prof. David Toll, Tunisha Gyawali</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="IHRR_launch time.jpeg">
+                <img src="" alt="IHRR Lunch">
+                <div class="gallery-item-overlay">
+                    <p>IHRR Lunch Time</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="Durham_city-1.jpeg">
+                <img src="" alt="Durham City">
+                <div class="gallery-item-overlay">
+                    <p>Durham City View</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="Durham_city-3.jpeg">
+                <img src="" alt="Durham City">
+                <div class="gallery-item-overlay">
+                    <p>Exploring Durham</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- UK Cities & Coastal Visits Gallery -->
+        <div class="gallery-content" data-category="uk-cities">
+            <div class="gallery-item" data-img="whitby-1.jpeg">
+                <img src="" alt="Whitby Visit">
+                <div class="gallery-item-overlay">
+                    <p>Whitby Coastal View</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="whitby-2.jpeg">
+                <img src="" alt="Whitby Visit">
+                <div class="gallery-item-overlay">
+                    <p>Whitby Harbor</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="whitby-3.jpeg">
+                <img src="" alt="Whitby Visit">
+                <div class="gallery-item-overlay">
+                    <p>Whitby Abbey</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="whitby-4.jpeg">
+                <img src="" alt="Whitby Visit">
+                <div class="gallery-item-overlay">
+                    <p>Whitby Beach Walk</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="seaham-1.jpeg">
+                <img src="" alt="Seaham Visit">
+                <div class="gallery-item-overlay">
+                    <p>Seaham Coastal Area</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="seaham-2.jpeg">
+                <img src="" alt="Seaham Visit">
+                <div class="gallery-item-overlay">
+                    <p>Seaham Beach</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="seaham-3.jpeg">
+                <img src="" alt="Seaham Visit">
+                <div class="gallery-item-overlay">
+                    <p>Seaham Lighthouse</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="seaham-4.jpeg">
+                <img src="" alt="Seaham Visit">
+                <div class="gallery-item-overlay">
+                    <p>Seaham Harbor View</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="seaham-5.jpeg">
+                <img src="" alt="Seaham Visit">
+                <div class="gallery-item-overlay">
+                    <p>Seaham Cliff Walk</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="Tynemouth-1.jpeg">
+                <img src="" alt="Tynemouth Visit">
+                <div class="gallery-item-overlay">
+                    <p>Tynemouth Beach</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="tynemouth-2.jpeg">
+                <img src="" alt="Tynemouth Visit">
+                <div class="gallery-item-overlay">
+                    <p>Tynemouth Priory</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="tynemouth-5.jpeg">
+                <img src="" alt="Tynemouth Visit">
+                <div class="gallery-item-overlay">
+                    <p>Tynemouth Ferry Ride</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="New Castle.jpeg">
+                <img src="" alt="Newcastle">
+                <div class="gallery-item-overlay">
+                    <p>Newcastle Upon Tyne</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nepal Site Visits & Tours Gallery -->
+        <div class="gallery-content" data-category="nepal-tours">
+            <div class="gallery-item" data-img="Laxmipur_landslide.jpeg">
+                <img src="" alt="Laxmipur Landslide">
+                <div class="gallery-item-overlay">
+                    <p>Laxmipur Landslide Investigation</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="dang_landslide.jpeg">
+                <img src="" alt="Dang Landslide">
+                <div class="gallery-item-overlay">
+                    <p>Dang Landslide Site Survey</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="Ilam_landslide.jpeg">
+                <img src="" alt="Ilam Landslide">
+                <div class="gallery-item-overlay">
+                    <p>Ilam Landslide Assessment</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="laxmipur_landslide2.jpeg">
+                <img src="" alt="Laxmipur Landslide">
+                <div class="gallery-item-overlay">
+                    <p>Laxmipur Landslide Field Work</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="Construction_management_tour_1.jpeg">
+                <img src="" alt="Construction Tour">
+                <div class="gallery-item-overlay">
+                    <p>Construction Management Tour</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="Construction_management_toyr-2.jpeg">
+                <img src="" alt="Construction Tour">
+                <div class="gallery-item-overlay">
+                    <p>Construction Site Visit</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="Hydropower_tour-1.jpeg">
+                <img src="" alt="Hydropower Tour">
+                <div class="gallery-item-overlay">
+                    <p>Hydropower Plant Tour</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="irrigation-1.jpeg">
+                <img src="" alt="Irrigation Site">
+                <div class="gallery-item-overlay">
+                    <p>Irrigation Project Visit</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="irrigation-2.jpeg">
+                <img src="" alt="Irrigation Site">
+                <div class="gallery-item-overlay">
+                    <p>Irrigation Canal Inspection</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- College Last Day Memories Gallery -->
+        <div class="gallery-content" data-category="college">
+            <div class="gallery-item" data-img="college_last_day1.jpeg">
+                <img src="" alt="College Last Day">
+                <div class="gallery-item-overlay">
+                    <p>College Last Day Celebration</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="college_last_day2.jpeg">
+                <img src="" alt="College Last Day">
+                <div class="gallery-item-overlay">
+                    <p>Farewell with Friends</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="Defence-1.jpeg">
+                <img src="" alt="Final Year Defence">
+                <div class="gallery-item-overlay">
+                    <p>Final Year Defence 2024</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bingo Competition Gallery -->
+        <div class="gallery-content" data-category="bingo">
+            <div class="gallery-item" data-img="Bingo-1.jpeg">
+                <img src="" alt="Bingo Competition">
+                <div class="gallery-item-overlay">
+                    <p>Bingo Competition Opening</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="Bingo-2.jpeg">
+                <img src="" alt="Bingo Competition">
+                <div class="gallery-item-overlay">
+                    <p>Competition Participants</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="bingo-3.jpeg">
+                <img src="" alt="Bingo Competition">
+                <div class="gallery-item-overlay">
+                    <p>Competition In Progress</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-img="bingo-4.jpeg">
+                <img src="" alt="Bingo Competition">
+                <div class="gallery-item-overlay">
+                    <p>Award Ceremony</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+        </div>
+    </div>
+
+    <!-- Recognition & Media -->
+    <section id="recognition">
+        <h2>Recognition & Media</h2>
+        <div class="recognition-grid">
+            <div class="recognition-card">
+                <div class="recognition-card-header">
+                    <h3>🎓 Honorary Recognition</h3>
+                    <div class="badge">Durham University IHRR</div>
+                </div>
+                <div class="recognition-card-body">
+                    <p>Featured as <span class="highlight">Visiting Fellow</span> at Durham University's Institute of Hazard, Risk and Resilience (IHRR) for contributions to geotechnical research and slope stability analysis.</p>
+                    <p>Recognized among distinguished researchers and practitioners working on resilience and hazard mitigation globally.</p>
+                    <a href="https://www.durham.ac.uk/research/institutes-and-centres/hazard-risk-resilience/about-us/our-people-/honorary-professors--visiting-fellows/" target="_blank" class="recognition-link">
+                        View Official Profile
+                    </a>
+                </div>
+            </div>
+
+            <div class="recognition-card">
+                <div class="recognition-card-header">
+                    <h3>📰 Research Collaboration Feature</h3>
+                    <div class="badge">IHRR News</div>
+                </div>
+                <div class="recognition-card-body">
+                    <p>Featured in Durham University's official news for the <span class="highlight">research collaboration</span> between IHRR and Tribhuvan University, Nepal.</p>
+                    <p>Highlighted work on developing road slope policy guidelines for Nepal under EPSRC-funded research project, contributing to safer infrastructure development.</p>
+                    <a href="https://www.durham.ac.uk/research/institutes-and-centres/hazard-risk-resilience/about-us/news/ihrr-hosts-visitors-from-tribhuvan-university-nepal-for-research-on-road-slope-policy-guidelines/" target="_blank" class="recognition-link">
+                        Read Full Article
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2>Contact Information</h2>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h3>Email</h3>
+                <a href="mailto:prajwal.timsina@durham.ac.uk?subject=Hello%20Prajwal&body=Hi%20Prajwal,%0D%0A%0D%0AI%20would%20like%20to%20connect%20with%20you.">prajwal.timsina@durham.ac.uk</a>
+            </div>
+            <div class="contact-item">
+                <h3>LinkedIn</h3>
+                <a href="https://www.linkedin.com/in/er-prajwal-timsina-3b1b57229/" target="_blank">Connect on LinkedIn</a>
+            </div>
+            <div class="contact-item">
+                <h3>Phone</h3>
+                <a href="tel:+9779810227789">+977 9810227789</a>
+            </div>
+            <div class="contact-item">
+                <h3>Location</h3>
+                <p>Baneshwor, Kathmandu, Nepal</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Prajwal Timsina. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Load the profile picture
+        async function loadProfilePic() {
+            try {
+                const data = await window.fs.readFile('PP.jpeg');
+                const blob = new Blob([data], { type: 'image/jpeg' });
+                const url = URL.createObjectURL(blob);
+                document.getElementById('profile-pic').src = url;
+                console.log('Profile picture loaded successfully');
+            } catch (error) {
+                console.error('Error loading profile picture:', error);
+                // Try without async as fallback
+                document.getElementById('profile-pic').src = 'PP.jpeg';
+            }
+        }
+
+        // Try multiple loading methods
+        if (window.fs && window.fs.readFile) {
+            loadProfilePic();
+        } else {
+            // Direct path fallback
+            document.getElementById('profile-pic').src = 'PP.jpeg';
+        }
+
+        // Gallery functionality
+        const galleryTabs = document.querySelectorAll('.gallery-tab');
+        const galleryContents = document.querySelectorAll('.gallery-content');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.querySelector('.lightbox-close');
+
+        // Tab switching
+        galleryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const category = tab.dataset.category;
+                
+                // Update active tab
+                galleryTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Update active content
+                galleryContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.dataset.category === category) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Load gallery images
+        async function loadGalleryImages() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            galleryItems.forEach(item => {
+                const imgElement = item.querySelector('img');
+                const imgName = item.dataset.img;
+                
+                if (window.fs && window.fs.readFile) {
+                    // Try to load from file system
+                    window.fs.readFile(imgName)
+                        .then(data => {
+                            const blob = new Blob([data], { type: 'image/jpeg' });
+                            const url = URL.createObjectURL(blob);
+                            imgElement.src = url;
+                        })
+                        .catch(() => {
+                            imgElement.src = imgName; // Fallback to direct path
+                        });
+                } else {
+                    imgElement.src = imgName; // Direct path
+                }
+                
+                // Lightbox functionality
+                item.addEventListener('click', () => {
+                    lightbox.classList.add('active');
+                    lightboxImg.src = imgElement.src;
+                });
+            });
+        }
+
+        // Close lightbox
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+
+        // Load gallery images on page load
+        loadGalleryImages();
+
+        // Active navigation on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+        function setActiveNav() {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', setActiveNav);
+        window.addEventListener('load', setActiveNav);
+
+        // Typing animation - Full text type and retype
+        const typedTextElement = document.querySelector('.typed-text');
+        const fullText = 'Civil Engineer | Geotechnical Specialist | Researcher';
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeText() {
+            if (!isDeleting) {
+                typedTextElement.textContent = fullText.substring(0, charIndex + 1);
+                charIndex++;
+                
+                if (charIndex === fullText.length) {
+                    isDeleting = true;
+                    setTimeout(typeText, 3000); // Wait 3 seconds before deleting
+                    return;
+                }
+                setTimeout(typeText, 80); // Typing speed
+            } else {
+                typedTextElement.textContent = fullText.substring(0, charIndex - 1);
+                charIndex--;
+                
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    setTimeout(typeText, 500); // Wait before retyping
+                    return;
+                }
+                setTimeout(typeText, 40); // Deleting speed (faster)
+            }
+        }
+
+        // Start typing animation after page load
+        setTimeout(typeText, 1000);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        let lastScroll = 0;
+        const nav = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.15)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
