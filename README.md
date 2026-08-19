@@ -1,1 +1,1 @@
-This is my personal portfolio wherer I updated my accompolishment, gallaries, and projects. 
+This is my personal portfolio where I upload my accompolishment, projects and gallaries.
